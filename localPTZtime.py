@@ -15,10 +15,12 @@
 	0.0.2
 			changed returned format
 	0.0.3
-			fixed bug in leap year calculation
+			fixed bug in leap year calculation#
+	0.0.4
+			support circuit python
 """
 
-__version__ = "0.0.3"
+__version__ = "0.0.4"
 
 
 import time
@@ -163,7 +165,7 @@ def _timecalc(timestamp: float, ptz_string: str):
 	#print("timestamp:\t" + str(int(timestamp)))
 
 	if (len(ptz_parts)==3):
-		year = time.gmtime(int(timestamp))[0]
+		year = time.localtime(int(timestamp))[0]
 		dst_start = _parseposixtransition(ptz_parts[1], year)
 		dst_end = _parseposixtransition(ptz_parts[2], year)
 
@@ -197,7 +199,7 @@ def _timecalc(timestamp: float, ptz_string: str):
 
 	timemod = timestamp + tot_offset_seconds
 
-	t = time.gmtime(int(timemod))
+	t = time.localtime(int(timemod))
 
 	tx = (t[0], t[1], t[2], t[3], t[4], t[5], t[6], t[7], int(is_dst), tot_offset_seconds)
 
