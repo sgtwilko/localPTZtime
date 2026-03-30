@@ -15,7 +15,7 @@
 	0.0.2
 			changed returned format
 	0.0.3
-			fixed bug in leap year calculation#
+			fixed bug in leap year calculation
 	0.0.4
 			support circuit python
 """
